@@ -1,0 +1,41 @@
+@HostAddress = http://localhost:5000
+
+### 
+# @name created
+POST {{HostAddress}}/api/user/create
+Content-Type: application/json
+
+{
+  "name": "string",
+  "email": "user@example.com",
+  "password": "stringst",
+  "role": "admin"
+}
+###
+
+### 
+# @name login
+POST {{HostAddress}}/api/user/login
+Content-Type: application/json
+
+{
+  "email": "Luegiuzada@Luegiuzin.com",
+  "password": "LuegiuBolado"
+}
+###
+
+###
+GET {{HostAddress}}/api/user
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.data.token}}
+###
+
+###
+GET {{HostAddress}}/api/user?page=1&limit=4
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.data.token}}
+###
+
+###
+DELETE {{HostAddress}}/api/user/
+###
